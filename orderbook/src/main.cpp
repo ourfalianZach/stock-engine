@@ -7,6 +7,12 @@
 
 using json = nlohmann::json;
 
+void add_cors(httplib::Response& res) {
+  res.set_header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.set_header("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS");
+  res.set_header("Access-Control-Allow-Headers", "Content-Type");
+}
+
 //covert BookSnapshot to JSON
 static json snapshot_to_json(const BookSnapshot& snap) {
   json j;
@@ -76,6 +82,7 @@ int main() {
 
   // Route: GET /health
   app.Get("/health", [](const httplib::Request& req, httplib::Response& res) {
+    add_cors(res);
     (void)req; // unused
     json j;
     j["status"] = "ok";
@@ -84,14 +91,23 @@ int main() {
 
   // Route: GET /book
   app.Get("/book", [&](const httplib::Request& req, httplib::Response& res) {
+    add_cors(res);
     std::size_t depth = depth_or_default(req, 10); 
     auto snap = book.snapshot(depth);
     auto j = snapshot_to_json(snap);
     res.set_content(j.dump(2), "application/json");
   });
+  app.Options(R"(.*)", [](const httplib::Request& req, httplib::Response& res) {
+    (void)req;
+    res.set_header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.set_header("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS");
+    res.set_header("Access-Control-Allow-Headers", "Content-Type");
+    res.status = 204;
+  });
 
   // Route: POST /orders
   app.Post("/orders", [&](const httplib::Request& req, httplib:: Response& res){
+    add_cors(res);
     json body;
 
     //step 1: if the input is not in the correct format end
@@ -160,6 +176,7 @@ int main() {
 
 
   app.Delete(R"(/orders/(\d+))", [&](const httplib::Request& req, httplib::Response& res){
+    add_cors(res);
     uint64_t id = 0;
     try{
       id = static_cast<uint64_t>(std::stoull(req.matches[1])); // req.matches[1] is the parameter passed in "/orders/id" (req.matches[1] = id)
@@ -188,6 +205,7 @@ int main() {
   });
 
   app.Get("/trades", [&](const httplib::Request& req, httplib::Response& res){ // /trades?limit=1"
+    add_cors(res);
     std::size_t limit = limit_or_default(req,50);
     auto trades = book.recent_trades(limit);
     json out;
