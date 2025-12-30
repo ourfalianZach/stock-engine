@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/zacharyourfalian/Repositories/stock-engine/orderbook/include
+CXX_INCLUDES = -I/Users/zacharyourfalian/Repositories/stock-engine/orderbook/include -I/Users/zacharyourfalian/Repositories/stock-engine/orderbook/third_party
 
 CXX_FLAGSarm64 = -std=gnu++20 -arch arm64 -Wall -Wextra -Wpedantic
 

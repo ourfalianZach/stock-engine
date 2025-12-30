@@ -1,13 +1,13 @@
 [
 {
   "directory": "/Users/zacharyourfalian/Repositories/stock-engine/orderbook/build",
-  "command": "/usr/bin/c++  -I/Users/zacharyourfalian/Repositories/stock-engine/orderbook/include -std=gnu++20 -arch arm64 -Wall -Wextra -Wpedantic -o CMakeFiles/orderbook.dir/src/main.cpp.o -c /Users/zacharyourfalian/Repositories/stock-engine/orderbook/src/main.cpp",
+  "command": "/usr/bin/c++  -I/Users/zacharyourfalian/Repositories/stock-engine/orderbook/include -I/Users/zacharyourfalian/Repositories/stock-engine/orderbook/third_party -std=gnu++20 -arch arm64 -Wall -Wextra -Wpedantic -o CMakeFiles/orderbook.dir/src/main.cpp.o -c /Users/zacharyourfalian/Repositories/stock-engine/orderbook/src/main.cpp",
   "file": "/Users/zacharyourfalian/Repositories/stock-engine/orderbook/src/main.cpp",
   "output": "CMakeFiles/orderbook.dir/src/main.cpp.o"
 },
 {
   "directory": "/Users/zacharyourfalian/Repositories/stock-engine/orderbook/build",
-  "command": "/usr/bin/c++  -I/Users/zacharyourfalian/Repositories/stock-engine/orderbook/include -std=gnu++20 -arch arm64 -Wall -Wextra -Wpedantic -o CMakeFiles/orderbook.dir/src/order_book.cpp.o -c /Users/zacharyourfalian/Repositories/stock-engine/orderbook/src/order_book.cpp",
+  "command": "/usr/bin/c++  -I/Users/zacharyourfalian/Repositories/stock-engine/orderbook/include -I/Users/zacharyourfalian/Repositories/stock-engine/orderbook/third_party -std=gnu++20 -arch arm64 -Wall -Wextra -Wpedantic -o CMakeFiles/orderbook.dir/src/order_book.cpp.o -c /Users/zacharyourfalian/Repositories/stock-engine/orderbook/src/order_book.cpp",
   "file": "/Users/zacharyourfalian/Repositories/stock-engine/orderbook/src/order_book.cpp",
   "output": "CMakeFiles/orderbook.dir/src/order_book.cpp.o"
 }

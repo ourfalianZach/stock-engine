@@ -9,6 +9,7 @@ add_executable(orderbook
   src/order_book.cpp
 ) # Define the executable target named 'orderbook'
 
+target_include_directories(orderbook PRIVATE include third_party)
 target_include_directories(orderbook PRIVATE include)
 target_include_directories(orderbook PRIVATE include) # Include directory for header files
 

@@ -39,6 +39,9 @@ public:
     BookSnapshot snapshot(std::size_t depth = 10) const;
 
     bool cancel(uint64_t order_id); // returns true if found and cancelled
+    
+    std::vector<Trade> recent_trades(std::size_t limit = 50) const;
+    void clear_trades();
 
 private:
     // asks: lowest price first
@@ -47,4 +50,7 @@ private:
     // bids: highest price first
     std::map<int64_t, std::deque<Order>, std::greater<int64_t>> bids_; // price -> orders at that price
     // instead of smallest to largest, we use largest to smallest (i.e., std::greater)
+
+    std::deque<Trade> trade_log_;
+    std::size_t trade_log_cap = 1000;
 };

@@ -34,6 +34,11 @@ std::vector<Trade> OrderBook::add_and_match(Order order) {
           .maker_order_id = maker.id
         });
 
+        trade_log_.push_back(trades.back());
+
+        if(trade_log_.size() > trade_log_cap)
+          trade_log_.pop_front();
+
         order.qty -= trade_qty;
         maker.qty -= trade_qty;
 
@@ -164,4 +169,26 @@ bool OrderBook::cancel(uint64_t order_id){
       }
     }
     return false; // if not found
+}
+
+std::vector<Trade> OrderBook::recent_trades(std::size_t limit) const{
+  std::vector<Trade> out;
+  if(limit == 0)
+    return out;
+  
+  // return up to `limit` most recent trades 
+  std::size_t start = 0;
+  if(trade_log_.size() > limit)
+    start = trade_log_.size() - limit;
+
+  out.reserve(trade_log_.size() - start);
+
+  for(std::size_t i = start; i < trade_log_.size(); i++)
+    out.push_back(trade_log_[i]);
+
+  return out;
+}
+
+void OrderBook::clear_trades() {
+  trade_log_.clear();
 }
