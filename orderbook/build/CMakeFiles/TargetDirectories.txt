@@ -1,0 +1,3 @@
+/Users/zacharyourfalian/Repositories/stock-engine/orderbook/build/CMakeFiles/orderbook.dir
+/Users/zacharyourfalian/Repositories/stock-engine/orderbook/build/CMakeFiles/edit_cache.dir
+/Users/zacharyourfalian/Repositories/stock-engine/orderbook/build/CMakeFiles/rebuild_cache.dir
