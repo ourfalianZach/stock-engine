@@ -20,3 +20,7 @@ Frontend (Next.js + TypeScript)
 	•	Order entry form
 	•	Immediate execution report (trades per order)
 	•	Auto-updating via polling
+
+
+	<img width="1902" height="615" alt="image" src="https://github.com/user-attachments/assets/6d3b96af-bca7-4f37-8bd5-45e973e880b8" />
+
